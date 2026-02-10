@@ -28,6 +28,7 @@ A Node.js/Express REST API for Interview Prep AI, an intelligent interview prepa
 ## 📦 Installation
 
 ### Prerequisites
+
 - Node.js v18 or higher
 - MongoDB Atlas account (free tier available)
 - Google Gemini API key
@@ -35,12 +36,14 @@ A Node.js/Express REST API for Interview Prep AI, an intelligent interview prepa
 ### Setup
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/Muhammadyaqoobwako/interview-prep-backend.git
 cd interview-prep-backend
 ```
 
 2. **Install dependencies**
+
 ```bash
 npm install
 ```
@@ -65,17 +68,20 @@ PORT=8000
 ```
 
 **Get your credentials:**
+
 - MongoDB Atlas: [mongodb.com/cloud/atlas](https://mongodb.com/cloud/atlas)
 - Gemini API: [aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
 
 4. **Start the server**
 
 Development (with nodemon):
+
 ```bash
 npm run dev
 ```
 
 Production:
+
 ```bash
 npm start
 ```
@@ -85,6 +91,7 @@ Server will run on `http://localhost:8000`
 ## 🔌 API Endpoints
 
 ### Authentication
+
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - Login user
 - `GET /api/auth/profile` - Get user profile (protected)
@@ -92,6 +99,7 @@ Server will run on `http://localhost:8000`
 - `POST /api/auth/upload-image` - Upload profile image (protected)
 
 ### Sessions
+
 - `GET /api/sessions` - Get all user sessions (protected)
 - `POST /api/sessions` - Create new session (protected)
 - `GET /api/sessions/:id` - Get session details (protected)
@@ -99,20 +107,24 @@ Server will run on `http://localhost:8000`
 - `DELETE /api/sessions/:id` - Delete session (protected)
 
 ### Questions
+
 - `POST /api/questions/add` - Add question to session (protected)
 - `PUT /api/questions/:id/pin` - Pin/unpin question (protected)
 - `PUT /api/questions/:id/note` - Add note to question (protected)
 
 ### AI
+
 - `POST /api/ai/generate-questions` - Generate interview questions (protected)
 - `POST /api/ai/generate-explanation` - Generate concept explanation (protected)
 
 ### Health Check
+
 - `GET /api/health/gemini` - Check Gemini API status
 
 ## 📊 Database Schema
 
 ### User
+
 ```javascript
 {
   name: String,
@@ -124,6 +136,7 @@ Server will run on `http://localhost:8000`
 ```
 
 ### Session
+
 ```javascript
 {
   userId: ObjectId,
@@ -136,6 +149,7 @@ Server will run on `http://localhost:8000`
 ```
 
 ### Question
+
 ```javascript
 {
   sessionId: ObjectId,
@@ -172,35 +186,40 @@ See [DEPLOYMENT.md](../DEPLOYMENT.md) for detailed instructions.
 ## 🧪 Testing
 
 Health check endpoint:
+
 ```bash
 curl https://your-backend-url/api/health/gemini
 ```
 
 ## 📝 Environment Variables Reference
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `MONGO_URI` | MongoDB connection string | Yes |
-| `JWT_SECRET` | Secret key for JWT signing | Yes |
-| `GEMINI_API_KEY` | Google Gemini API key | Yes |
-| `GEMINI_MODEL` | Gemini model version | Yes |
-| `PORT` | Server port (default: 8000) | No |
+| Variable         | Description                 | Required |
+| ---------------- | --------------------------- | -------- |
+| `MONGO_URI`      | MongoDB connection string   | Yes      |
+| `JWT_SECRET`     | Secret key for JWT signing  | Yes      |
+| `GEMINI_API_KEY` | Google Gemini API key       | Yes      |
+| `GEMINI_MODEL`   | Gemini model version        | Yes      |
+| `PORT`           | Server port (default: 8000) | No       |
 
 ## 🐛 Troubleshooting
 
 ### "MONGO_URI not set"
+
 - Check `.env` file exists and has correct MongoDB connection string
 - Verify MongoDB Atlas cluster is active
 
 ### "GEMINI_API_KEY not set"
+
 - Get API key from [aistudio.google.com](https://aistudio.google.com/app/apikey)
 - Ensure key is copied correctly to `.env`
 
 ### CORS Errors
+
 - Frontend URL must be added to CORS origins in `server.js`
 - Check that requests include proper headers
 
 ### 404 Errors on Deployment
+
 - Ensure environment variables are set in deployment platform
 - Check that PORT environment variable is configured
 
